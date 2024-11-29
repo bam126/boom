@@ -1,0 +1,117 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+int main()
+{
+	int p, n;
+	string q;
+	setlocale(LC_ALL, "Russian");
+	cout << "Введите систему счисления:";
+	cin >> p;
+	cout << "Введите число:";
+	cin >> n;
+	if (n >= p) {
+		while (n > 0) {
+			int l = (n % p);
+			std::string k = std::to_string(l);
+			q += k;
+			n = (n / p);
+		}
+		cout << "Ваш результат:";
+		reverse(q.begin(), q.end());
+		cout << q;
+	}
+	else if (n<=16) {
+		cout << "Ваш результат:" << std::hex<<n;
+	}
+
+	return 0;
+}
+
+#include <iostream>
+#include <math.h>
+#include <string>
+#include <typeinfo>
+using namespace std;
+int main()
+{
+	int p;
+	int x = 0;
+	int result = 0;
+	string q;
+	setlocale(LC_ALL, "Russian");
+	cout << "Введите систему счиления:";
+	cin >> p;
+	if (p < 2 || p>16) {
+		cout << "Система счисления должна быть в диапазоне 2-16";
+	}
+	cout << "Введите символы(цифры):";
+	cin >> q;
+	int a = size(q);
+	char*b = new char[a];
+	for (int i = 0; i < a; i++) {
+		char z = q[i];
+		if (z >= '0' && z <= '9') {
+			x = z - '0';
+		}
+		else if (z >= 'A' && z <= 'F') {
+			x = z - 'A' + 10;
+		}
+		if (x >= p) {
+			cout <<"Число в" << ' '<< p <<' '<< "системе счисления"<<' ' << "не должна равняться или превышать ее" << endl;
+		}
+		result = (result * p) + x;
+	}
+	cout << "Ваш результат:" << result;
+	return 0;
+}
+
+
+
+#include <iostream>
+#include <math.h>
+#include <string>
+using namespace std;
+int main()
+{
+	int p, n, m, s; // s-сумма элементов в p-ой системе счисления 
+	string k, t;
+	setlocale(LC_ALL, "Russian");
+	cout << "Введите систему счисления:";
+	cin >> p;
+	cout << "Введите число N в десятичное системе счисления:";
+	cin >> n;
+	cout << "Введите число M в десятичное системе счисления:";
+	cin >> m;
+	if (n > p) {
+		while (n > 0) {
+			int l = (n % p);
+			string q = std::to_string(l);
+			k += q;
+			n = n / p;
+		}
+		reverse(k.begin(), k.end());
+	}
+	else if (n <= 16) {
+		
+	}
+
+	if (m > p) {
+		while (m > 0) {
+			int e = (m % p);
+			string z = std::to_string(e);
+			t += z;
+			m = m / p;
+		}
+		reverse(t.begin(), t.end());
+	}
+
+	int x = stoi(k);
+	int y = stoi(t);
+	s = x + y;
+	cout << "Ваши элементы:" << k << "+" << t << endl;
+	cout << "Ваша сумма элементов:" << s;
+	return 0;
+}
+//спросить про тот как лучше преобразовать сложение в столбик 
